@@ -5,7 +5,7 @@
 #include <PubSubClient.h>
 #include "config.h"
 
-void diagnostics_print(const PubSubClient& client) {
+void diagnostics_print(PubSubClient& client) {
   Serial.println("\n==========================================");
   Serial.println("  DIAGNÓSTICO DO SISTEMA");
   Serial.println("==========================================");
@@ -23,8 +23,8 @@ void diagnostics_print(const PubSubClient& client) {
   Serial.printf("[MQTT]   Client ID:  %s\n", MQTT_CLIENT_ID);
 
   // Tópicos
-  Serial.printf("[MQTT]   Telemetria: %s\n", TOPIC_TELEMETRY);
-  Serial.printf("[MQTT]   Alertas:    %s\n", TOPIC_ALERT);
+  Serial.printf("[MQTT]   Telemetria: %s\n", TB_TOPIC_TELEMETRY);
+  Serial.printf("[MQTT]   Alertas:    %s\n", TB_TOPIC_ALERT);
 
   // Parâmetros de detecção
   Serial.println("\n[Detector] Parâmetros configurados:");
