@@ -28,6 +28,15 @@ MPU6050 --(I²C)--> ESP32 --(MQTT/Wi-Fi)--> HiveMQ Broker --(MQTT)--> ThingsBoar
 | Ambiente de desenvolvimento | PlatformIO |
 | Versionamento | Git + GitHub |
 
+## Ligação do Hardware
+
+| ESP32 | MPU6050 | Função |
+|---|---|---|
+| 3.3V | VCC | Alimentação |
+| GND | GND | Terra |
+| GPIO21 | SDA | Dados I²C |
+| GPIO22 | SCL | Clock I²C |
+
 ## Estrutura do Repositório
 
 ```
@@ -38,7 +47,7 @@ fall-detection-iot/
 │   ├── include/
 │   │   ├── config.h            # Credenciais e constantes (não versionado em produção)
 │   │   ├── wifi_manager.h      # Conexão e reconexão Wi-Fi
-│   │   ├── sensor.h            # Simulação do MPU6050 (três estados)
+│   │   ├── sensor.h            # Leitura real do MPU6050 via I²C
 │   │   ├── fall_detector.h     # Algoritmo de detecção de queda (FSM)
 │   │   ├── mqtt_manager.h      # Publicação MQTT via HiveMQ
 │   │   └── diagnostics.h       # Diagnóstico do sistema na inicialização
@@ -135,3 +144,4 @@ Disciplina: Sistemas Distribuídos — CCET / UFMA
 - [x] Etapa 1.5 — Algoritmo de detecção de queda
 - [x] Etapa 1.6 — Publicação MQTT
 - [x] Etapa 1.7 — Teste local com Serial Monitor
+- [x] Etapa 1.5 (revisão) — Substituição da simulação pela leitura real do MPU6050 via I²C
