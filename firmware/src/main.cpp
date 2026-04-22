@@ -23,8 +23,14 @@ void setup() {
   // Banner de inicialização
   Serial.println("==========================================");
   Serial.println("  Fall Detection IoT — ESP32");
-  Serial.println("  Validação do Algoritmo de Detecção de Queda");
+  Serial.println("  Leitura real do MPU6050");
   Serial.println("==========================================");
+
+  // Inicializa sensor
+  if (!sensor_init()) {
+    Serial.println("[Sistema] Halted — sensor nao encontrado.");
+    while (true) delay(1000);
+  }
 
   // Conecta à rede Wi-Fi
   wifi_connect();
@@ -34,7 +40,7 @@ void setup() {
   diagnostics_print(mqttClient);
 
   // Mensagem de início do monitoramento
-  Serial.println("[Sistema] Monitoramento iniciado.\n");
+  Serial.println("[Sistema] Monitoramento iniciado com sensor real.\n");
 }
 
 // Função de loop principal
